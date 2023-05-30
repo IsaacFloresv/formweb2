@@ -32,19 +32,19 @@ const CompFormWeb = () => {
 
 
     //#region useStates de los select
-    //useState de datos
+   /* //useState de datos
     const [ prov, setProv ] = useState([])
     const [ cant, setCant ] = useState([])
-    const [ dist, setDist ] = useState()
+    const [ dist, setDist ] = useState()*/
 
     //#endregion useStates de los select
 
     //#region useState de carga de Datos Personas y Comerciante
-    const [ pers, setPers ] = useState([])
+    /*const [ pers, setPers ] = useState([])
     const [ comer, setComer ] = useState([])
     const [ idprov, setidProv ] = useState()
     const [ idcant, setidCant ] = useState()
-    const [ idDist, setidDist ] = useState()
+    const [ idDist, setidDist ] = useState()*/
 
     //#endregion useState Basicos
 
@@ -58,20 +58,20 @@ const CompFormWeb = () => {
     const [ tel, setTel ] = useState()
     const [ email, setEmail ] = useState()
     const [ fchaHech, setfchaHech ] = useState()
-    const [ fchaGar, setfchaGar ] = useState()
+    /*const [ fchaGar, setfchaGar ] = useState()
     const [ descH, setdescH ] = useState()
     const [ ubProv, setubProv ] = useState()
     const [ ubCant, setubCant ] = useState()
-    const [ ubDist, setubDist ] = useState()
+    const [ ubDist, setubDist ] = useState()*/
 
-    //inputs del comerciante
+    /*//inputs del comerciante
     const [ tdiC, settdiC ] = useState()
     const [ ndiC, setndiC ] = useState()
     const [ nombC, setnombC ] = useState()
     const [ apell1C, setapell1C ] = useState()
     const [ apell2C, setapell2C ] = useState()
     //const [ lblPHNombFantacy, setlblPHNombFantacy ] = useState()
-    const [ lblPHNombFantacyC, setlblPHNombFantacyC ] = useState()
+    const [ lblPHNombFantacyC, setlblPHNombFantacyC ] = useState()*/
 
     //useState para los Select
     const [ selectNidA, setselectNidA ] = useState(0)
@@ -155,11 +155,11 @@ const CompFormWeb = () => {
     }
 
     function limpiardatosC() {
-        setndiC('')
+        /*setndiC('')
         setnombC("")
         setapell1C("")
         setapell2C("")
-        setidClValidC('')
+        setidClValidC('')*/
         setnClValidC('')
         setpaClValidC('')
         setsaClValidC('')
@@ -813,7 +813,7 @@ const CompFormWeb = () => {
     //#region Carga de datos Ubicacion Geografica
 
     //Mostrar todas las provincias
-    const getProvs = async () => {
+    /*const getProvs = async () => {
 
         const res = await axios.get(URI + 'prov/')
         setProv(res.data)
@@ -822,10 +822,10 @@ const CompFormWeb = () => {
         //setidCant(0)
         //
         console.log(prov || 0)
-    }
+    }*/
 
     //Mostrar los cantones por provincia
-    const getCants = async (v) => {
+    /*const getCants = async (v) => {
         if (v != null) {
             setdeshabCant(false)
             setdeshabDist(true)
@@ -835,10 +835,10 @@ const CompFormWeb = () => {
             setCant(res.data)
             getDists()
         } getDists(0)
-    }
+    }*/
 
     //Mostrar los distritos por canton
-    const getDists = async (v) => {
+    /*const getDists = async (v) => {
         console.log('en getDists 1 ' + v)
         if (v != null) {
             (v == 0) ? setdeshabDist(true) : setdeshabDist(false)
@@ -849,7 +849,7 @@ const CompFormWeb = () => {
             setDist(res.data)
             console.log('en getDists 2 ' + v)
         }
-    }
+    }*/
     //#endregion
 
     //Solicitud a DB
@@ -884,7 +884,7 @@ const CompFormWeb = () => {
             })
     }
 
-    const cargarDatosC = async (val, ub) => {
+    /*const cargarDatosC = async (val, ub) => {
         console.log('En cargardatosC')
         await fetch(URI + 'comer/' + val)
             .then(resp => resp.json())
@@ -952,7 +952,7 @@ const CompFormWeb = () => {
                     cargarDatosP(val, ub)
                 }
             })
-    }
+    }*/
 
     //#endregion
 
@@ -960,6 +960,33 @@ const CompFormWeb = () => {
     return (
         <div className="container bg-white mx-4 my-4 fw-semibold mx-auto max-w-7x1 px-1 sm:px-6 lg:px-8">
             <form id="formulario" className="g-3 me-3 needs-validation" noValidate action='#' required>
+                <div className="row my-3 ms-1">
+                    <div className="my-3">
+                        <h3 className="clrTitle">Distancia y categoría</h3>
+                    </div>
+                    <div className="col-md-3">
+                        <label htmlFor="input_TID" className="form-label">Distancia</label>
+                        <select id="input_TID" defaultValue={selectNidA} className="form-select" name="tid" onChange={(e) => input_TIDchange(e.target.selectedIndex, e.target.value)} onClick={limpiardatosA} required>
+                            <option defaultValue="DEFAULT" value="0" disabled >Seleccione...</option>
+                            <option defaultValue="1">CARRERA 7KM</option>
+                            <option defaultValue="2">CAMINATA 7KM</option>
+                            <option defaultValue="3">CARRERA 7KM (CON CENA O ALMUERZO)</option>
+                            <option defaultValue="4">CARRERA 13KM</option>
+                            <option defaultValue="5">CARRERA 13KM (CON CENA O ALMUERZO)</option>
+                        </select>
+                    </div>
+                    <div className="col-md-3">
+                        <label htmlFor="input_TID" className="form-label">Categoría</label>
+                        <select id="input_TID" defaultValue={selectNidA} className="form-select" name="tid" onChange={(e) => input_TIDchange(e.target.selectedIndex, e.target.value)} onClick={limpiardatosA} required>
+                            <option defaultValue="DEFAULT" value="0" disabled >Seleccione...</option>
+                            <option defaultValue="1">CARRERA 7KM</option>
+                            <option defaultValue="2">CAMINATA 7KM</option>
+                            <option defaultValue="3">CARRERA 7KM (CON CENA O ALMUERZO)</option>
+                            <option defaultValue="4">CARRERA 13KM</option>
+                            <option defaultValue="5">CARRERA 13KM (CON CENA O ALMUERZO)</option>
+                        </select>
+                    </div>
+                </div>
                 <div className="row my-3 ms-1">
                     <div className="my-3">
                         <h3 className="clrTitle">Datos de persona afectada</h3>
@@ -970,8 +997,7 @@ const CompFormWeb = () => {
                             <option defaultValue="DEFAULT" value="0" disabled >Seleccione...</option>
                             <option defaultValue="1">Cédula Nacional</option>
                             <option defaultValue="2">Pasaporte</option>
-                            <option defaultValue="3">Cédula Jurídica</option>
-                            <option defaultValue="4">DIMEX</option>
+                            <option defaultValue="3">DIMEX</option>
                         </select>
                     </div>
                     <div id="divinputCed" className={classdivDNI}>
@@ -1005,6 +1031,31 @@ const CompFormWeb = () => {
                     </div>
                 </div>
                 <div className="row my-3 ms-1">
+                    <div className="col-md-5">
+                        <label htmlFor="inputFComp" className="form-label">Fecha de nacimiento</label>
+                        <div className="input-group date" id="datepicker">
+                            <DatePicker
+                                isClearable
+                                locale={es}
+                                selected={fchaHech}
+                                onChange={(date) => validarFch(date)}
+                                dateFormat="dd/MM/yyyy"
+                                name="fcompincu" type="text" className={`form-control ${fhHValidC}`}
+                                id="inputFComp" disabled={dehabil} required
+                            />
+                        </div>
+                        <div className="invalid-feedback">
+                            Por favor, ingrese su fecha de nacimiento.
+                        </div>
+                    </div>
+                    <div id="divinputCedC" className={classdivDNIC}>
+                        <label htmlFor="inputCedC" className="form-label">Edad</label>
+                        <input name="nidc" type="text" className={`form-control ${idclValidC}`} id='inputCedC' value={ndiC} onChange={(e) => validarInputCedC(e.target.value, '2')} disabled={dehabilndiC} required />
+                        <div className="invalid-feedback">
+                            Por favor, ingrese su edad.
+                        </div>
+                        <span id="errorCedC" className="fs-6"></span>
+                    </div>
                     <div className="col-md-4">
                         <label htmlFor="inputEmail" className="form-label">Correo electronico</label>
                         <input name="email" type="email" className={`form-control ${emclValid}`} id="inputEmail" valor={email} required disabled={dehabil} onChange={(e) => validarInputEmail(e.target.value)} />
@@ -1022,80 +1073,10 @@ const CompFormWeb = () => {
                         <span id="errortel" className="fs-6"></span>
                     </div>
                 </div>
+                
                 <div className="row my-3 ms-1">
-                    <div className="my-3">
-                        <h3 className="clrTitle">Ubicación Geográfica</h3>
-                    </div>
-                    <div className="col-md-4">
-                        <label htmlFor="inputprov" className="form-label">Provincia</label>
-                        <select name="prov" id="inputprov" className="form-select" disabled={deshabProv} value={ubProv} onChange={(e) => getCants(e.target.value)} required>
-                            <option defaultValue="DEFAULT" value="0">Seleccione...</option>
-                            {prov?.map((prov) => (
-                                <option key={prov.id_provincia} value={prov.id_provincia}> {prov.name_provincia} </option>
-                            )
-                            )}
-                        </select>
-                        <div className="invalid-feedback">
-                            Por favor, selecione una provincia.
-                        </div>
-                    </div>
-                    <div className="col-md-4">
-                        <label htmlFor="inputcant" className="form-label">Cantón</label>
-                        <select name="cant" id="inputcant" className="form-select" disabled={deshabCant} value={ubCant} onChange={(e) => getDists(e.target.value)} required>
-                            <option defaultValue="DEFAULT" value="0">Seleccione...</option>
-                            {
-                                idprov > 0 &&
-                                (cant?.map((cant) => (
-                                    <option key={cant.ident} value={cant.ident}> {cant.name_canton} </option>
-                                ))
-                                )}
-                        </select>
-                        <div className="invalid-feedback">
-                            Por favor, selecione un canton.
-                        </div>
-                    </div>
-                    <div className="col-md-4">
-                        <label htmlFor="inputdist" className="form-label">Distrito</label>
-                        <select name="dist" id="inputdist" className="form-select" disabled={deshabDist} onChange={(e) => setidDist(e.target.value)} value={ubDist} required>
-                            <option defaultValue="DEFAULT" value="0">Seleccione...</option>
-                            {
-                                idcant > 0 &&
-                                (dist?.map((dist) => (
-                                    <option key={dist.id_distrito} value={dist.id_distrito}> {dist.name_distrito} </option>
-                                ))
-                                )}
-                        </select>
-                        <div className="invalid-feedback">
-                            Por favor, selecione un distrito.
-                        </div>
-                    </div>
-                </div>
-                <div className="row my-3 ms-1">
-                    <div className="my-3">
-                        <h3 className="clrTitle">Datos de Comerciante</h3>
-                    </div>
-                    <div className="col-md-3">
-                        <label htmlFor="input_TIDC" className="form-label">Tipo de identificación</label>
-                        <select name="vtidc" id="input_TIDC" defaultValue={selectNidC} className="form-select" disabled={dehabil} onChange={(e) => input_TIDCchange(e.target.selectedIndex, e.target.value)} required>
-                            <option defaultValue="DEFAULT" value="0" disabled >Seleccione...</option>
-                            <option defaultValue="1">Cédula Nacional</option>
-                            <option defaultValue="2">Pasaporte</option>
-                            <option defaultValue="3">Cédula Jurídica</option>
-                            <option defaultValue="4">DIMEX</option>
-                            <option defaultValue="5">NO INDICA</option>
-                        </select>
-                        <div className="invalid-feedback">
-                            Por favor, selecione una opcion.
-                        </div>
-                    </div>
-                    <div id="divinputCedC" className={classdivDNIC}>
-                        <label htmlFor="inputCedC" className="form-label">Identificación</label>
-                        <input name="nidc" type="text" className={`form-control ${idclValidC}`} id='inputCedC' value={ndiC} onChange={(e) => validarInputCedC(e.target.value, '2')} disabled={dehabilndiC} required />
-                        <div className="invalid-feedback">
-                            Por favor, ingrese el numero de identificación del comerciante.
-                        </div>
-                        <span id="errorCedC" className="fs-6"></span>
-                    </div>
+                    
+                    
                     <div id="divinputNameC" className={classdivnombC}>
                         <label htmlFor="inputNameC" className="form-label" id="lblinputNameC">{lblinputNameC}</label>
                         <input name="nombrec" type="text" className={`form-control ${nclValidC}`} readOnly={onlyRnombC} id="inputNameC" value={nombC} onChange={(e) => ValidarinputNombC(e.target.value, "2")} disabled={dehabilnombC} required />
